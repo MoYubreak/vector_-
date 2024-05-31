@@ -28,6 +28,33 @@ namespace moyu
 			}
 		}
 
+		template<class InPutIterator>
+		vector(InPutIterator frist, InPutIterator last)
+		{
+			while (frist != last)
+			{
+				push_back(*frist);
+				++frist;
+			}
+		}
+
+		vector(size_t n, const T& x = T())
+		{
+			for (size_t i = 0; i < n; i++)
+			{
+				push_back(x);
+			}
+		}
+
+
+		vector(int n, const T& x = T())
+		{
+			for (size_t i = 0; i < n; i++)
+			{
+				push_back(x);
+			}
+		}
+
 		void swap(vector<T>& tmp)
 		{
 			std::swap(_start, tmp._start);
@@ -38,10 +65,6 @@ namespace moyu
 
 		vector<T> operator=(vector<T> tmp)
 		{
-			for (size_t i = 0; i < tmp.size(); i++)
-			{
-				cout << i << ' ';
-			}
 			swap(tmp);
 			return *this;
 		}
@@ -168,17 +191,7 @@ namespace moyu
 		{
 			if (n > capacity())
 			{
-				T* tmp = new T[capacity()];
-				
-				for (size_t i = 0; i < size(); i++)
-				{
-					tmp[i] = _start[i];
-				}
 				reserve(n);
-				for (size_t i = 0; i < size(); i++)
-				{
-					tmp[i] = _start[i];
-				}
 			}
 
 			if (n < size())
@@ -194,6 +207,9 @@ namespace moyu
 				_finish = _start + n;
 			}
 		}
+
+
+
 		~vector()
 		{
 			delete[] _start;
@@ -302,6 +318,24 @@ namespace moyu
 		cout << endl;
 		str.resize(10);
 		for (auto e : str)
+		{
+			cout << e << ' ';
+		}
+		cout << endl;
+	}
+
+	void testvector3()
+	{
+		int arr[5] = { 1,2,3,4,5 };
+		vector<int> tmp(arr, arr + 3);
+		for (auto e : tmp)
+		{
+			cout << e << ' ';
+		}
+		cout << endl;
+
+		vector<int> tmp1(10, 222);
+		for (auto e : tmp1)
 		{
 			cout << e << ' ';
 		}
