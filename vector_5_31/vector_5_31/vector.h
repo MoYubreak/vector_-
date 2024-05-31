@@ -46,12 +46,19 @@ namespace moyu
 			}
 		}
 
-
 		vector(int n, const T& x = T())
 		{
 			for (size_t i = 0; i < n; i++)
 			{
 				push_back(x);
+			}
+		}
+
+		vector(const initializer_list<T>& tmp)
+		{
+			for (auto e : tmp)
+			{
+				push_back(e);
 			}
 		}
 
@@ -336,6 +343,19 @@ namespace moyu
 
 		vector<int> tmp1(10, 222);
 		for (auto e : tmp1)
+		{
+			cout << e << ' ';
+		}
+		cout << endl;
+
+		vector<int> tmp3{ 1,2,3,2333,4,5,100,6,7 };
+		vector<int> tmp4{ 1,2,3,2333,4,5};
+		for (auto e : tmp3)
+		{
+			cout << e << ' ';
+		}
+		cout << endl;
+		for (auto e : tmp4)
 		{
 			cout << e << ' ';
 		}
